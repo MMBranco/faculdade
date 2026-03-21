@@ -1,31 +1,28 @@
-import java.util.Scanner;
+public class maiorNum {
 
-public class maiorNum{
-    public static void main(String[] args) {
-        Scanner teclado = new Scanner(System.in);
+    private int[] numeros;
 
-        int maior = 0;
-        int menor = 0;
-        int soma = 0;
 
-        for (int i = 0; i < 5; i++) {
-            System.out.println("Digite o " + (i + 1) + "º número:");
-            int num = teclado.nextInt();
+    public maiorNum(int[] entrada) {
+        this.numeros = entrada;
+    }
 
-            if (i == 0) {
-                maior = menor = num;
-            } else {
-                if (num > maior) maior = num;
-                if (num < menor) menor = num;
-            }
 
-            soma += num;
+    public int encontrarMaior() {
+        int maior = numeros[0];
+        for (int n : numeros) {
+            if (n > maior) {
+                maior = n;
+            } 
         }
+        return maior;
+    }
 
-        System.out.println("Maior número: " + maior);
-        System.out.println("Menor número: " + menor);
-        System.out.println("Média: " + (double) soma / 5);
+    public static void main(String[] args) {  
+        int[] meuVetor = {2, 5, 1, 9, 3};
+        
 
-        teclado.close();
+        maiorNum analise = new maiorNum(meuVetor);
+        System.out.println("O maior número é: " + analise.encontrarMaior());
     }
 }
